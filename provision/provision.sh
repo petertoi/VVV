@@ -396,7 +396,7 @@ nginx_setup() {
             -key /etc/nginx/server.key \
             -out /etc/nginx/server.crt \
             -days 3650 \
-            -subj /CN=*.wordpress-develop.dev/CN=*.wordpress.dev/CN=*.vvv.dev 2>&1)"
+            -subj /CN=*.toibox-web01.test 2>&1)"
 	  echo "$vvvsigncert"
   fi
 
@@ -658,7 +658,7 @@ cleanup_vvv(){
   # Cleanup the hosts file
   echo "Cleaning the virtual machine's /etc/hosts file..."
   sed -n '/# vvv-auto$/!p' /etc/hosts > /tmp/hosts
-  echo "127.0.0.1 vvv.dev # vvv-auto" >> "/etc/hosts"
+  echo "127.0.0.1 toibox-web01.test # vvv-auto" >> "/etc/hosts"
   mv /tmp/hosts /etc/hosts
 }
 
@@ -706,4 +706,4 @@ cleanup_vvv
 end_seconds="$(date +%s)"
 echo "-----------------------------"
 echo "Provisioning complete in "$(( end_seconds - start_seconds ))" seconds"
-echo "For further setup instructions, visit http://vvv.dev"
+echo "For further setup instructions, visit http://toibox-web01.test"
